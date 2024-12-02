@@ -1,0 +1,153 @@
+/* Estilo geral */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lexend Zetta', sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* Estrutura geral */
+html, body {
+    color: #ffffff;
+    background-color: #2e2e2e;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header e navegação */
+header {
+    background-color: #000000d5;
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    color: rgb(255, 255, 255);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #f0f0f0;
+}
+
+/* Seção parallax */
+.parallax {
+    height: 400px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 400px;
+    margin: 0 auto;
+}
+
+/* Conteúdo principal */
+main {
+    padding: 40px;
+    background-color: rgb(19, 19, 19);
+}
+
+/* Seções */
+section {
+    padding: 60px 0;
+}
+
+.about h2, .services h2, footer h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.about p, .services p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* Botões de serviço */
+.services .container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.service-box {
+    background-color: #303030;
+    padding: 30px;
+    border-radius: 8px;
+    flex: 1;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    transition: transform 0.3s, background-color 0.3s;
+    cursor: pointer;
+    display: block;
+}
+
+.service-box:hover {
+    background-color: #505050;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.service-box h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.service-box p {
+    font-size: 16px;
+}
+
+/* Footer */
+footer {
+    background-color: #0f0f0f;
+    color: white;
+    text-align: center;
+    padding: 40px 0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .services .container {
+        flex-direction: column;
+    }
+}
+
