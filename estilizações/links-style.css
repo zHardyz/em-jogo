@@ -1,0 +1,148 @@
+/* Estilo geral */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lexend Zetta', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #121212;
+    color: #ffffff;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Altura total da página */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    flex: 1; /* Ocupa o espaço disponível */
+}
+
+/* Header */
+header {
+    background-color: #000000c7;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: center; /* Centraliza a logo e os links */
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    color: white;
+    margin-right: auto; /* Empurra os links para o centro */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    justify-content: center; /* Centraliza os itens da lista */
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #00aeff;
+}
+
+/* Botão Home */
+.nav-links .home-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.nav-links .home-btn:hover {
+    background-color: #66bb6a;
+}
+
+/* Seção de links */
+.links-section {
+    padding: 40px 0;
+}
+
+.links-section h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 36px;
+}
+
+.links-category {
+    margin-bottom: 40px;
+}
+
+.links-category h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ffffff;
+    padding-bottom: 5px;
+}
+
+.link-item {
+    margin-bottom: 20px;
+}
+
+.link-item a {
+    font-size: 20px;
+    color: #00a2ff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.link-item a:hover {
+    color: #2f00ff;
+}
+
+.link-item p {
+    font-size: 16px;
+    color: #cccccc;
+    margin-top: 5px;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: #444444;
+    margin: 20px 0;
+}
+
+
+
+
+/* Footer */
+footer {
+    background-color: #0f0f0f;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto; /* Empurra o footer para o final */
+}
+
+footer p {
+    color: #ffffff;
+    font-size: 14px;
+}
+
+

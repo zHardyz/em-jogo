@@ -1,0 +1,244 @@
+/* Geral */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lexend Zetta', sans-serif;
+}
+
+body {
+    background-color: #121212;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    background-color: #000000c0;
+    padding: 5px 0;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #00bcd4;
+}
+
+/* Barra de pesquisa */
+.search-bar {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.search-bar input {
+    width: 50%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #303030;
+    color: white;
+}
+
+/* Mensagem de "não tem nada" */
+.noResultsMessage {
+    display: none; /* Esconde inicialmente */
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente */
+    color: rgba(255, 255, 255, 0.7); /* Texto transparente */
+    font-size: 18px;
+    font-weight: bold;
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
+    margin: 50px auto; /* Centraliza horizontalmente */
+    text-align: center;
+}
+
+/* Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* Itens e imagens */
+.item {
+    border: 1px solid #303030;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    background-color: #1e1e1e;
+}
+
+.item-title {
+    display: block;
+    margin-top: 10px;
+    font-size: 18px;
+    color: #00bcd4;
+    text-decoration: none;
+}
+
+/* Container com imagem e texto sobreposto */
+.image-overlay-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.carousel-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-wrapper img {
+    width: 100%;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.next {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.next:hover {
+    background-color: #00bcd4;
+}
+
+.image-overlay-container img {
+    width: 100%;
+    display: block;
+    filter: blur(4px);
+    transition: filter 0.3s ease;
+}
+
+.image-overlay-container:hover img {
+    filter: blur(8px); /* Mais blur ao passar o mouse */
+}
+
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 80%;
+    transition: font-size 0.3s ease, padding 0.3s ease;
+}
+
+.overlay-text h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    transition: font-size 0.3s ease;
+}
+
+.overlay-text p {
+    font-size: 16px;
+    transition: font-size 0.3s ease;
+}
+
+/* Responsivo para texto sobreposto */
+@media (max-width: 768px) {
+    .overlay-text {
+        padding: 15px;
+        max-width: 90%;
+    }
+
+    .overlay-text h2 {
+        font-size: 20px;
+    }
+
+    .overlay-text p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .overlay-text {
+        padding: 10px;
+        max-width: 95%;
+    }
+
+    .overlay-text h2 {
+        font-size: 18px;
+    }
+
+    .overlay-text p {
+        font-size: 12px;
+    }
+}
+
+/* Footer */
+footer {
+    background-color: #000000c0;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto; /* Garante que o footer fique no final */
+    width: 100%;
+    position: relative;
+}
+
+footer p {
+    font-size: 14px;
+}
+
+/* Para telas menores */
+@media (max-width: 480px) {
+    footer p {
+        font-size: 12px;
+    }
+}

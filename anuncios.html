@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anúncios</title>
+    <link rel="stylesheet" href="estilizações/anuncios-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Zetta:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="links-onedrive.html">Links</a></li>
+                    <li><a href="downloads.html">Downloads</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Barra de pesquisa -->
+    <section class="search-bar">
+        <input type="text" id="searchInput" placeholder="Pesquisar anúncios...">
+    </section>
+
+    <main>
+        <section id="anuncios" class="anuncios-section">
+            <div class="container">
+                <h1>Meus Anúncios</h1>
+                <p class="noResultsMessage" id="noResultsMessage">Não tem nada</p>
+
+                <div class="grid">
+                    <!-- Item 1 -->
+                    <div class="item" data-title="Projeto Hardy em jogo">
+                        <div class="carousel">
+                            <div class="image-overlay-container">
+                                <div class="carousel-wrapper">
+                                    <img src="imagens-em breve/hollow-knight.jpg" alt="Imagem 1">
+                                    <img src="imagens-em breve/b9b807b480f07f6c92cd14d740b4554fe1328b13-810x450.avif" alt="Imagem 2">
+                                    <img src="imagens-em breve/1_EdLomyJ7aM-sOmr4JngnZQ.png" alt="Imagem 3">
+                                </div>
+                                <button class="next">&gt;</button>
+                                <div class="overlay-text">
+                                    <h2>projeto pendente</h2>
+                                    <p>sem projeto em andamento no momento</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="index.html" class="item-title">Em breve</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Hardy em jogo. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="anuncios.js"></script>
+</body>
+</html>
