@@ -43,21 +43,20 @@ header {
 .nav-links {
     list-style: none;
     display: flex;
-}
-
-.nav-links li {
-    margin-left: 20px;
+    gap: 15px;
+    justify-content: center; /* Centraliza os itens da lista */
+    align-items: center;
 }
 
 .nav-links a {
-    color: rgb(255, 255, 255);
     text-decoration: none;
+    color: white;
     font-size: 18px;
     transition: color 0.3s;
 }
 
 .nav-links a:hover {
-    color: #f0f0f0;
+    color: #00aeff;
 }
 
 /* Seção parallax */
