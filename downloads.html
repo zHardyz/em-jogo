@@ -3,66 +3,298 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Downloads</title>
+    <meta name="description" content="Hardy em Jogo - Downloads diretos de jogos e recursos">
+    <title>Downloads - Hardy em Jogo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Zetta:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="estilizações/dstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="estilizações/modern-style.css">
+    <style>
+        /* Estilos específicos para a página de downloads */
+        .download-category {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .download-category h2 {
+            color: var(--accent-color);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .download-category h2 i {
+            color: var(--accent-color);
+        }
+        
+        .download-item {
+            padding: 1.5rem;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: var(--border-radius);
+            margin-bottom: 1.5rem;
+            transition: transform var(--transition-speed), background-color var(--transition-speed);
+            border-left: 3px solid var(--accent-color);
+        }
+        
+        .download-item:hover {
+            transform: translateY(-5px);
+            background-color: rgba(0, 0, 0, 0.4);
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.2);
+        }
+        
+        .download-item a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+        
+        .download-item a i {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+        }
+        
+        .download-item p {
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            margin-left: 2.5rem;
+        }
+        
+        .download-info {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.8rem;
+            margin-left: 2.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .download-info span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        
+        .download-btn {
+            background-color: var(--accent-color);
+            color: white !important;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            font-weight: 600;
+            margin-top: 1rem;
+            margin-left: 2.5rem;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            z-index: 1;
+        }
+        
+        .download-btn span {
+            position: relative;
+            z-index: 2;
+            display: inline-block;
+        }
+        
+        .download-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: var(--accent-hover);
+            transition: left var(--btn-hover-duration) ease;
+            z-index: 0;
+        }
+        
+        .download-btn:hover::before {
+            left: 0;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(76, 0, 255, 0.4);
+        }
+        
+        .download-btn:hover span {
+            color: var(--primary-color);
+        }
+        
+        hr {
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 2rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .download-category {
+                padding: 1.5rem;
+            }
+            
+            .download-item {
+                padding: 1.2rem;
+            }
+            
+            .download-item a {
+                font-size: 1.1rem;
+            }
+            
+            .download-info {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav class="navbar">
             <div class="container">
-                <div class="logo">Hardy</div>
+                <div class="logo">
+                    <i class="fas fa-gamepad"></i>
+                    Hardy
+                </div>
+                <button class="mobile-toggle" aria-expanded="false" aria-label="Abrir menu">
+                    <i class="fas fa-bars"></i>
+                </button>
                 <ul class="nav-links">
-                    <li><a href="index.html" >Home</a></li>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="links-onedrive.html"><i class="fas fa-link"></i> Links</a></li>
+                    <li><a href="anuncios.html"><i class="fas fa-bullhorn"></i> Anúncios</a></li>
                 </ul>
             </div>
         </nav>
     </header>
 
     <main>
-        <section id="downloads" class="links-section">
+        <section class="hero">
             <div class="container">
-                <h1>Arquivos para Download</h1>
+                <h1 class="reveal">Downloads</h1>
+                <p class="reveal">Baixe arquivos diretamente pelo site. Todos os arquivos são verificados e seguros.</p>
+            </div>
+        </section>
 
-                <!-- Seção de arquivos -->
-                <div class="links-category">
-                    <h2>Jogos</h2>
-                    <div class="link-item">
-                        <a href="arquivos/pluto_t6_full_game.torrent" download>Download bo2, full game (para plutonium)
+        <section id="downloads" class="downloads-section">
+            <div class="container">
+                <!-- Seção de arquivos de jogos -->
+                <div class="download-category reveal">
+                    <h2><i class="fas fa-gamepad"></i> Jogos</h2>
+                    
+                    <div class="download-item">
+                        <a href="arquivos/pluto_t6_full_game.torrent" download>
+                            <i class="fas fa-download"></i>
+                            Black Ops 2, Full Game (para Plutonium)
                         </a>
-                        <p>é preciso torrent.</p>
-                    </div>
-                    <hr>
-                    <div class="link-item">
-                        <a href="arquivos/pluto_t4_full_game.torrent" download>Download WORLD AT WAR, full game (para plutonium)
-                        </a>
-                        <p>é preciso torrent.</p>
-                    </div>
-                    <hr>
-                    <div class="link-item">
-                        <a href="arquivos/iw5m_dlcs.torrent" download>Download MODERN WARFARE 3 (para plutonium)
-                        </a>
-                        <p>é preciso torrent.</p>
-                    </div>
-                    <hr>
-                    <div class="links-category">
-                        <h2>Imagens</h2>
-                        <div class="link-item">
-                            <a href="arquivos/imagens geradas por ia.zip" download>Imagens geradas por ia</a>
-                            <p>apenas 15 imagens em estilo anime geradas por ia</p>
+                        <p>Versão completa do jogo para ser usada com o cliente Plutonium.</p>
+                        <div class="download-info">
+                            <span><i class="fas fa-file"></i> Arquivo Torrent</span>
+                            <span><i class="fas fa-info-circle"></i> Necessário cliente Torrent</span>
                         </div>
-                        <hr>
-          
+                        <a href="arquivos/pluto_t6_full_game.torrent" download class="download-btn">
+                            <span>Baixar Agora</span>
+                        </a>
+                    </div>
+                    
+                    <div class="download-item">
+                        <a href="arquivos/pluto_t4_full_game.torrent" download>
+                            <i class="fas fa-download"></i>
+                            World At War, Full Game (para Plutonium)
+                        </a>
+                        <p>Versão completa do jogo Call of Duty: World at War para ser usada com o cliente Plutonium.</p>
+                        <div class="download-info">
+                            <span><i class="fas fa-file"></i> Arquivo Torrent</span>
+                            <span><i class="fas fa-info-circle"></i> Necessário cliente Torrent</span>
+                        </div>
+                        <a href="arquivos/pluto_t4_full_game.torrent" download class="download-btn">
+                            <span>Baixar Agora</span>
+                        </a>
+                    </div>
+                    
+                    <div class="download-item">
+                        <a href="arquivos/iw5m_dlcs.torrent" download>
+                            <i class="fas fa-download"></i>
+                            Modern Warfare 3 (para Plutonium)
+                        </a>
+                        <p>Versão completa do jogo Call of Duty: Modern Warfare 3 para ser usada com o cliente Plutonium.</p>
+                        <div class="download-info">
+                            <span><i class="fas fa-file"></i> Arquivo Torrent</span>
+                            <span><i class="fas fa-info-circle"></i> Necessário cliente Torrent</span>
+                        </div>
+                        <a href="arquivos/iw5m_dlcs.torrent" download class="download-btn">
+                            <span>Baixar Agora</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Seção de imagens -->
+                <div class="download-category reveal">
+                    <h2><i class="fas fa-image"></i> Imagens</h2>
+                    
+                    <div class="download-item">
+                        <a href="arquivos/imagens geradas por ia.zip" download>
+                            <i class="fas fa-download"></i>
+                            Imagens geradas por IA
+                        </a>
+                        <p>Coleção de 15 imagens em estilo anime geradas por inteligência artificial.</p>
+                        <div class="download-info">
+                            <span><i class="fas fa-file-archive"></i> Arquivo ZIP</span>
+                            <span><i class="fas fa-images"></i> 15 imagens</span>
+                        </div>
+                        <a href="arquivos/imagens geradas por ia.zip" download class="download-btn">
+                            <span>Baixar Agora</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
         
+        <!-- Seção de instruções -->
+        <section class="instructions">
+            <div class="container">
+                <h2 class="reveal">Como baixar e instalar</h2>
+                <div class="card reveal">
+                    <h3><i class="fas fa-info-circle"></i> Arquivos Torrent</h3>
+                    <p>Para baixar arquivos torrent, você precisará de um cliente BitTorrent como uTorrent, qBittorrent ou similar. Siga estas etapas:</p>
+                    <ol>
+                        <li>Baixe o arquivo .torrent do link acima</li>
+                        <li>Abra o arquivo com o seu cliente torrent favorito</li>
+                        <li>Escolha uma localização para o download</li>
+                        <li>Aguarde o download ser concluído</li>
+                        <li>Para jogos Plutonium, siga as instruções do site oficial para configurar o launcher</li>
+                    </ol>
+                    <p>Se você precisar de ajuda adicional, entre em contato pelo Instagram.</p>
+                </div>
+            </div>
         </section>
     </main>
 
     <footer>
         <div class="container">
+            <div class="social-links">
+                <a href="https://instagram.com/hardy_em_jogo" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
             <p>Instagram: @hardy_em_jogo</p>
+            <p>&copy; 2024 Hardy em Jogo. Todos os direitos reservados.</p>
         </div>
     </footer>
+
+    <script src="modern-script.js"></script>
 </body>
 </html>

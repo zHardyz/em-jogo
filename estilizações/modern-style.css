@@ -1,0 +1,500 @@
+/* Estilo base moderno para o site Hardy em Jogo */
+:root {
+  /* Paleta de cores principal - tema dark preto e branco com roxo */
+  --primary-color: #080808;
+  --secondary-color: #141414;
+  --accent-color: #4c00ff; /* Roxo vibrante */
+  --accent-hover: #ffffff; /* Branco para hover */
+  --text-color: #f8f8f8;
+  --text-muted: #b0b0b0;
+  --card-bg: #1a1a1a;
+  --card-hover: #222222;
+  --header-bg: rgba(0, 0, 0, 0.95);
+  --footer-bg: #0a0a0a;
+  --border-radius: 12px;
+  --transition-speed: 0.3s;
+  --btn-hover-duration: 0.7s; /* Duração mais longa para o hover do botão */
+}
+
+/* Reset e estilos gerais */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lexend Zetta', sans-serif;
+  scroll-behavior: smooth;
+}
+
+html, body {
+  color: var(--text-color);
+  background-color: var(--primary-color);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Links e botões */
+a {
+  text-decoration: none;
+  color: var(--accent-color);
+  transition: color var(--transition-speed);
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+.btn {
+  display: inline-block;
+  background-color: var(--accent-color);
+  color: white !important; /* Garante que o texto permaneça branco */
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  z-index: 1;
+  text-align: center;
+}
+
+.btn span {
+  position: relative;
+  z-index: 2; /* Garante que o texto fique acima do pseudo-elemento */
+  display: inline-block; /* Importante para manter o texto visível */
+  transition: transform var(--transition-speed);
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: var(--accent-hover);
+  transition: left var(--btn-hover-duration) ease;
+  z-index: 0;
+}
+
+.btn:hover::before {
+  left: 0;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(76, 0, 255, 0.4);
+}
+
+.btn:hover span {
+  color: var(--primary-color);
+}
+
+/* Estilo específico para o botão Sobre Mim no menu */
+.nav-links .btn {
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 2px solid var(--accent-color);
+  transition: all 0.4s ease;
+}
+
+.nav-links .btn:hover {
+  background-color: transparent; /* Deixa o background transparente para mostrar o efeito do ::before */
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(76, 0, 255, 0.4);
+}
+
+.nav-links .btn:hover span {
+  color: var(--primary-color); /* Texto preto quando em hover */
+}
+
+/* Header e navegação */
+header {
+  background-color: var(--header-bg);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-color);
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo i {
+  color: var(--accent-color);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--text-color);
+  font-size: 1rem;
+  font-weight: 500;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent-color);
+  transition: width var(--transition-speed);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Botão mobile menu */
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Hero section */
+.hero {
+  padding: 6rem 0;
+  text-align: center;
+  background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to right, transparent, var(--accent-color), transparent);
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+  text-shadow: 0 2px 10px rgba(138, 43, 226, 0.3);
+}
+
+.hero p {
+  font-size: 1.25rem;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  color: var(--text-muted);
+}
+
+/* Cards e grids */
+.card {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  transition: transform var(--transition-speed), background-color var(--transition-speed);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  background-color: var(--card-hover);
+  box-shadow: 0 10px 30px rgba(138, 43, 226, 0.2); /* Sombra com cor roxa */
+}
+
+.card-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.card-img {
+  width: 100%;
+  border-radius: var(--border-radius);
+  margin-bottom: 1rem;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+}
+
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-speed);
+}
+
+.card:hover .card-img img {
+  transform: scale(1.05);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* Sections */
+section {
+  padding: 4rem 0;
+}
+
+section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+}
+
+section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: var(--accent-color);
+  border-radius: 2px;
+}
+
+/* Footer */
+footer {
+  background-color: var(--footer-bg);
+  padding: 3rem 0;
+  text-align: center;
+  color: var(--text-muted);
+  border-top: 1px solid rgba(138, 43, 226, 0.2);
+}
+
+footer .social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+footer .social-links a {
+  color: var(--text-color);
+  font-size: 1.8rem;
+  transition: color var(--transition-speed), transform var(--transition-speed);
+}
+
+footer .social-links a:hover {
+  color: var(--accent-color);
+  transform: scale(1.2);
+}
+
+/* Carousel */
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+}
+
+.carousel-container {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carousel-item {
+  flex: 0 0 100%;
+  width: 100%;
+  height: auto;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel-controls {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.carousel-btn {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-speed);
+  border: 2px solid var(--accent-color);
+}
+
+.carousel-btn:hover {
+  background-color: var(--accent-color);
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  section h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .mobile-toggle {
+    display: block;
+  }
+  
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    flex-direction: column;
+    gap: 0;
+    background-color: var(--secondary-color);
+    width: 80%;
+    height: calc(100vh - 70px);
+    padding: 2rem;
+    transition: right var(--transition-speed);
+    z-index: 999;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+  }
+  
+  .nav-links.active {
+    right: 0;
+  }
+  
+  .nav-links li {
+    width: 100%;
+  }
+  
+  .nav-links a {
+    display: block;
+    padding: 1rem 0;
+    font-size: 1.2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .hero h1 {
+    font-size: 2rem;
+  }
+  
+  .hero p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  section {
+    padding: 2.5rem 0;
+  }
+  
+  .card {
+    padding: 1rem;
+  }
+  
+  .card-title {
+    font-size: 1.3rem;
+  }
+}
+
+/* Animação de revelação */
+.reveal-initial {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Estilo para devices móveis */
+.is-mobile .btn {
+  padding: 0.8rem 1.6rem;
+  font-size: 1.1rem;
+}
+
+.is-mobile .card {
+  transform: none;
+  transition: box-shadow var(--transition-speed);
+}
+
+.is-mobile .card:hover {
+  transform: none;
+}
+
+.is-mobile .card.touch-hover {
+  background-color: var(--card-hover);
+  box-shadow: 0 10px 30px rgba(138, 43, 226, 0.2);
+}
+
+.is-mobile .nav-links a {
+  font-size: 1.1rem;
+  padding: 1.2rem 0;
+}
+
+.is-mobile .hero {
+  padding: 4rem 0;
+}
+
+.is-mobile section {
+  padding: 3rem 0;
+} 

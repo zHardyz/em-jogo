@@ -3,226 +3,546 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Links Google Drive</title>
+    <meta name="description" content="Hardy em Jogo - Biblioteca de links para Google Drive e MediaFire">
+    <title>Biblioteca de Links - Hardy em Jogo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Zetta:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="estilizações/links-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="estilizações/modern-style.css">
+    <style>
+        /* Estilos específicos para a página de links */
+        .links-category {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .links-category h2 {
+            color: var(--accent-color);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .links-category h2 i {
+            color: var(--accent-color);
+        }
+        
+        .link-item {
+            padding: 1rem 0;
+        }
+        
+        .link-item a {
+            display: inline-block;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+        
+        .link-item a::before {
+            content: '→';
+            margin-right: 0.5rem;
+            color: var(--accent-color);
+        }
+        
+        .link-item p {
+            color: var(--text-muted);
+            margin-left: 1.5rem;
+        }
+        
+        hr {
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 1rem 0;
+        }
+        
+        .carousel-wrapper {
+            margin-top: 1rem;
+        }
+        
+        .carousel {
+            margin-top: 1rem;
+            position: relative;
+        }
+        
+        .carousel-item {
+            position: relative;
+        }
+        
+        .carousel-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            padding: 1rem;
+            color: white;
+        }
+        
+        .show-carousel {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color var(--transition-speed), transform var(--transition-speed);
+        }
+        
+        .show-carousel:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-3px);
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .link-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .tag {
+            background: var(--accent-color);
+            color: white;
+            font-size: 0.8rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+        
+        @media (max-width: 768px) {
+            .links-category {
+                padding: 1.5rem;
+            }
+            
+            .link-item a {
+                font-size: 1.1rem;
+            }
+            
+            .carousel-caption {
+                padding: 0.5rem;
+            }
+            
+            .carousel-caption h3 {
+                font-size: 1.1rem;
+                margin-bottom: 0.2rem;
+            }
+            
+            .carousel-caption p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav class="navbar">
             <div class="container">
-                <div class="logo">Hardy</div>
+                <div class="logo">
+                    <i class="fas fa-gamepad"></i>
+                    Hardy
+                </div>
+                <button class="mobile-toggle" aria-expanded="false" aria-label="Abrir menu">
+                    <i class="fas fa-bars"></i>
+                </button>
                 <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="downloads.html"><i class="fas fa-download"></i> Downloads</a></li>
+                    <li><a href="anuncios.html"><i class="fas fa-bullhorn"></i> Anúncios</a></li>
                 </ul>
             </div>
         </nav>
     </header>
 
     <main>
+        <section class="hero">
+            <div class="container">
+                <h1 class="reveal">Biblioteca de Links</h1>
+                <p class="reveal">Acesse uma coleção organizada de links para recursos, jogos e muito mais.</p>
+            </div>
+        </section>
+
         <section id="links" class="links-section">
             <div class="container">
-                <h1>Links do google drive</h1>
-                <!-- Seção de links para Jogos -->
-                <div class="links-category">
-                    <h2>Recursos para edição de videos</h2>
+                <!-- Seção de links para Recursos de Edição -->
+                <div class="links-category reveal">
+                    <h2><i class="fas fa-video"></i> Recursos para Edição de Vídeos</h2>
                     <div class="link-item">
-                        <a href="https://drive.google.com/drive/folders/1E3d4A_THoqWFC-cwdUthv9Z_nkTKFYM_?usp=drive_link" target="_blank">pack 1 </a>
-                        <p>sons, musicas background e icones</p>
+                        <a href="https://drive.google.com/drive/folders/1E3d4A_THoqWFC-cwdUthv9Z_nkTKFYM_?usp=drive_link" target="_blank">Pack 1 - Recursos Essenciais</a>
+                        <p>Uma coleção completa de sons, músicas de fundo e ícones para suas produções.</p>
+                        <div class="link-tags">
+                            <span class="tag">Áudio</span>
+                            <span class="tag">Música</span>
+                            <span class="tag">Ícones</span>
+                        </div>
                     </div>
                     <hr>
                     <div class="link-item">
-                        <a href="" target="">pack 2</a>
-                        <p>em breve</p>
+                        <a href="" target="">Pack 2 - Recursos Avançados</a>
+                        <p>Em breve! Aguarde novos recursos para edição de vídeo.</p>
+                        <div class="link-tags">
+                            <span class="tag">Em Breve</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Seção de links para Utilitários -->
-                <div class="links-category">
-                    <h2>Dragonball Sparking zero</h2>
+                <!-- Seção de links para Dragon Ball -->
+                <div class="links-category reveal">
+                    <h2><i class="fas fa-dragon"></i> Dragon Ball Sparking Zero</h2>
                     <div class="carousel-wrapper">
-                        <button class="show-carousel">Ver</button>
+                        <button class="show-carousel">Ver Imagens</button>
                         <div class="carousel-container hidden">
                             <div class="carousel">
-                                <div class="carousel-item"><img src="imagens/hq720.jpg" alt="Imagem 2"></div>
-                                <div class="carousel-item"><img src="imagens/dragon-ball-sparking-zero_pw6f.jpg" alt="Imagem 1"></div>
+                                <div class="carousel-container">
+                                    <div class="carousel-item">
+                                        <img src="imagens/hq720.jpg" alt="Dragon Ball Sparking Zero Screenshot">
+                                        <div class="carousel-caption">
+                                            <h3>Dragon Ball Sparking Zero</h3>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="imagens/dragon-ball-sparking-zero_pw6f.jpg" alt="Dragon Ball Sparking Zero Gameplay">
+                                        <div class="carousel-caption">
+                                            <h3>Gameplay</h3>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <button class="prev">&lt;</button>
-                            <button class="next">&gt;</button>
                         </div>
                     </div>
                     <div class="link-item">
-                        <a href="https://drive.google.com/drive/folders/18CRUz3I4jVP0KNbrv-bFtxP22Mc03IF5?usp=sharing" target="
-                        _blank">pack de otimização</a>
-                        <p>remove bloom do jogo e melhora o desempenho</p>
+                        <a href="https://drive.google.com/drive/folders/18CRUz3I4jVP0KNbrv-bFtxP22Mc03IF5?usp=sharing" target="_blank">Pack de Otimização</a>
+                        <p>Remove bloom do jogo e melhora o desempenho.</p>
+                        <div class="link-tags">
+                            <span class="tag">Otimização</span>
+                            <span class="tag">Mods</span>
+                        </div>
                     </div>
                     <hr>
                     <div class="link-item">
-                        <a href="https://drive.google.com/drive/folders/1GaSWAQqk6up_CenBsNIl_bFdcK_MaLJn?usp=drive_link" target="
-                        _blank">Game save 100%</a>
-                        <p>save 100% de sparking zero</p>
+                        <a href="https://drive.google.com/drive/folders/1GaSWAQqk6up_CenBsNIl_bFdcK_MaLJn?usp=drive_link" target="_blank">Game Save 100%</a>
+                        <p>Save 100% completo de Dragon Ball Sparking Zero.</p>
+                        <div class="link-tags">
+                            <span class="tag">Save</span>
+                            <span class="tag">100%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seção de links para Hollow Knight -->
+                <div class="links-category reveal">
+                    <h2><i class="fas fa-bug"></i> Hollow Knight</h2>
+                    <div class="carousel-wrapper">
+                        <button class="show-carousel">Ver Imagens</button>
+                        <div class="carousel-container hidden">
+                            <div class="carousel">
+                                <div class="carousel-container">
+                                    <div class="carousel-item">
+                                        <img src="imagens/okhm7mpm7rha1.jpg" alt="Hollow Knight Screenshot">
+                                        <div class="carousel-caption">
+                                            <h3>Hollow Knight</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://drive.google.com/file/d/1euu1v5zfKRy5q1pcomIkFRYntZ2bA2lR/view?usp=sharing" target="_blank">Hollow Knight Mobile</a>
+                        <p>Versão mobile completa com todas as DLCs (1GB).</p>
+                        <div class="link-tags">
+                            <span class="tag">Mobile</span>
+                            <span class="tag">Completo</span>
+                        </div>
                     </div>
                     <hr>
-                    <div class="links-category">
-                        <h2>Jogos mobile</h2>
-                        <div class="carousel-wrapper">
-                            <button class="show-carousel">Ver</button>
-                            <div class="carousel-container hidden">
-                                <div class="carousel">
-                                    <div class="carousel-item"><img src="imagens/maxresdefault.jpg" alt="Imagem 2"></div>
-                                    <div class="carousel-item"><img src="imagens/okhm7mpm7rha1.jpg" alt="Imagem 1"></div>
+                    <div class="link-item">
+                        <a href="https://drive.google.com/file/d/16V4hZdQia025n6Mw-jrXqjYO7nfjIjDo/view?usp=drive_link" target="_blank">Hollow Knight Lite</a>
+                        <p>Versão otimizada para celulares com hardware mais fraco (440MB).</p>
+                        <div class="link-tags">
+                            <span class="tag">Mobile</span>
+                            <span class="tag">Lite</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seção de links para Celeste -->
+                <div class="links-category reveal">
+                    <h2><i class="fas fa-mountain"></i> Celeste</h2>
+                    <div class="carousel-wrapper">
+                        <button class="show-carousel">Ver Imagens</button>
+                        <div class="carousel-container hidden">
+                            <div class="carousel">
+                                <div class="carousel-container">
+                                    <div class="carousel-item">
+                                        <img src="imagens/celesteof.jpg" alt="Celeste Screenshot">
+                                        <div class="carousel-caption">
+                                            <h3>Celeste</h3>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="imagens/i-launched-celeste-on-my-fricking-phone-v0-kfh4m29pplsc1.jpg" alt="Celeste Mobile">
+                                        <div class="carousel-caption">
+                                            <h3>Celeste Mobile</h3>
+                                        </div>
+                                    </div>
                                 </div>
-                                <button class="prev">&lt;</button>
-                                <button class="next">&gt;</button>
                             </div>
                         </div>
-                        <div class="link-item">
-                            <a href="https://drive.google.com/file/d/1euu1v5zfKRy5q1pcomIkFRYntZ2bA2lR/view?usp=sharing" target="
-                            _blank">Hollow knight</a>
-                            <p>versão mobile + todas as dlc 1GB</p>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://www.mediafire.com/file/8wxtbyfrsfw80ld/Celeste_v1.4.0.0_%2B_Emulador_Skyline_-_APK_World.rar/file" target="_blank">Celeste + Emulador</a>
+                        <p>Versão completa do Celeste para dispositivos móveis (800MB).</p>
+                        <div class="link-tags">
+                            <span class="tag">Mobile</span>
+                            <span class="tag">Emulador</span>
                         </div>
-            
-                        <div class="link-item">
-                            <a href="https://drive.google.com/file/d/16V4hZdQia025n6Mw-jrXqjYO7nfjIjDo/view?usp=drive_link" target="
-                            _blank">hollow-knight-Lite</a>
-                            <p>uma versão para celulares fracos (440MB)</p>
+                    </div>
+                    <hr>
+                    <div class="link-item">
+                        <a href="https://www.instagram.com/reel/C8w1wMPOXdx/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA%3D%3D" target="_blank">Guia de Instalação</a>
+                        <p>Tutorial passo a passo para instalar Celeste + emulador no seu dispositivo.</p>
+                        <div class="link-tags">
+                            <span class="tag">Tutorial</span>
+                            <span class="tag">Instagram</span>
                         </div>
-                        <hr>
-                        <div class="carousel-wrapper">
-                            <button class="show-carousel">Ver</button>
-                            <div class="carousel-container hidden">
-                                <div class="carousel">
-                                    <div class="carousel-item"><img src="imagens/unnamed.png" alt="Imagem 2"></div>
-                                    <div class="carousel-item"><img src="imagens/unnamed.png" alt="Imagem 1"></div>
+                    </div>
+                </div>
+
+                <!-- Seção de Jogos Mobile Adicionais -->
+                <div class="links-category reveal">
+                    <h2><i class="fas fa-mobile-alt"></i> Jogos Mobile</h2>
+                    
+                    <!-- App Video Game Pro -->
+                    <div class="carousel-wrapper">
+                        <button class="show-carousel">Ver Imagens</button>
+                        <div class="carousel-container hidden">
+                            <div class="carousel">
+                                <div class="carousel-container">
+                                    <div class="carousel-item">
+                                        <img src="imagens/unnamed.png" alt="App Video Game Pro">
+                                        <div class="carousel-caption">
+                                            <h3>App Video Game Pro</h3>
+                                        </div>
+                                    </div>
                                 </div>
-                                <button class="prev">&lt;</button>
-                                <button class="next">&gt;</button>
                             </div>
                         </div>
-                        <div class="link-item">
-                            <a href="https://drive.google.com/file/d/1Pt80miAkhCg0cj2IQHI5ALImuCMzUaTw/view?usp=drive_link" target="
-                            _blank">App video game pro</a>
-                            <p>Jogos retro pelo celular</p>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://drive.google.com/file/d/1Pt80miAkhCg0cj2IQHI5ALImuCMzUaTw/view?usp=drive_link" target="_blank">App Video Game Pro</a>
+                        <p>Emulador de jogos retrô para celular.</p>
+                        <div class="link-tags">
+                            <span class="tag">Retrô</span>
+                            <span class="tag">Emulador</span>
                         </div>
-                        <hr>
-                        <div class="carousel-wrapper">
-                            <button class="show-carousel">Ver</button>
-                            <div class="carousel-container hidden">
-                                <div class="carousel">
-                                    <div class="carousel-item"><img src="imagens/Game-Key-Art_0015_DC_KeyArt_NoLogo_1920x1080px-1024x576.jpg" alt="Imagem 2"></div>
-                                    <div class="carousel-item"><img src="imagens/44hld39d0bg81.jpg" alt="Imagem 1"></div>
+                    </div>
+                    <hr>
+                    
+                    <!-- Dead Cells -->
+                    <div class="carousel-wrapper">
+                        <button class="show-carousel">Ver Imagens</button>
+                        <div class="carousel-container hidden">
+                            <div class="carousel">
+                                <div class="carousel-container">
+                                    <div class="carousel-item">
+                                        <img src="imagens/Game-Key-Art_0015_DC_KeyArt_NoLogo_1920x1080px-1024x576.jpg" alt="Dead Cells">
+                                        <div class="carousel-caption">
+                                            <h3>Dead Cells</h3>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="imagens/44hld39d0bg81.jpg" alt="Dead Cells Gameplay">
+                                        <div class="carousel-caption">
+                                            <h3>Gameplay</h3>
+                                        </div>
+                                    </div>
                                 </div>
-                                <button class="prev">&lt;</button>
-                                <button class="next">&gt;</button>
                             </div>
                         </div>
-                        <div class="link-item">
-                            <a href="https://www.mediafire.com/file/zngod238i8xj8ag/com.playdigious.deadcells.mobile_3.3.15-APK_Award.apk/file 
-                            " target="
-                            _blank">Dead cells</a>
-                            <p>Dead cells mobile (2GB)</p>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://www.mediafire.com/file/zngod238i8xj8ag/com.playdigious.deadcells.mobile_3.3.15-APK_Award.apk/file" target="_blank">Dead Cells</a>
+                        <p>Versão mobile do aclamado roguelike (2GB).</p>
+                        <div class="link-tags">
+                            <span class="tag">Roguelike</span>
+                            <span class="tag">Ação</span>
                         </div>
-                        <hr>
-                        <div class="carousel-wrapper">
-                            <button class="show-carousel">Ver</button>
-                            <div class="carousel-container hidden">
-                                <div class="carousel">
-                                    <div class="carousel-item"><img src="imagens/limbocompleto.jpg" alt="Imagem 2"></div>
-                                    <div class="carousel-item"><img src="imagens/limbo-18475-2.jpg" alt="Imagem 1"></div>
+                    </div>
+                    <hr>
+                    
+                    <!-- Limbo -->
+                    <div class="carousel-wrapper">
+                        <button class="show-carousel">Ver Imagens</button>
+                        <div class="carousel-container hidden">
+                            <div class="carousel">
+                                <div class="carousel-container">
+                                    <div class="carousel-item">
+                                        <img src="imagens/limbocompleto.jpg" alt="Limbo">
+                                        <div class="carousel-caption">
+                                            <h3>Limbo</h3>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="imagens/limbo-18475-2.jpg" alt="Limbo Gameplay">
+                                        <div class="carousel-caption">
+                                            <h3>Gameplay</h3>
+                                        </div>
+                                    </div>
                                 </div>
-                                <button class="prev">&lt;</button>
-                                <button class="next">&gt;</button>
                             </div>
                         </div>
-                        <div class="link-item">
-                            <a href="https://www.mediafire.com/file/2w0kps9drdztxl5/LIMBO_%28MOD%2C_Unlocked%29_1.20_latestmodapks.com.apk/file" target="
-                            _blank">Limbo</a>
-                            <p>Limbo (141MB)</p>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://www.mediafire.com/file/2w0kps9drdztxl5/LIMBO_%28MOD%2C_Unlocked%29_1.20_latestmodapks.com.apk/file" target="_blank">Limbo</a>
+                        <p>Versão mobile do clássico jogo de plataforma atmosférico (141MB).</p>
+                        <div class="link-tags">
+                            <span class="tag">Plataforma</span>
+                            <span class="tag">Puzzle</span>
                         </div>
-                        <hr>
-                        <div class="carousel-wrapper">
-                            <button class="show-carousel">Ver</button>
-                            <div class="carousel-container hidden">
-                                <div class="carousel">
-                                    <div class="carousel-item"><img src="imagens/celesteof.jpg" alt="Imagem 2"></div>
-                                    <div class="carousel-item"><img src="imagens/i-launched-celeste-on-my-fricking-phone-v0-kfh4m29pplsc1.jpg" alt="Imagem 1"></div>
+                    </div>
+                    <hr>
+                    
+                    <!-- Omori -->
+                    <div class="carousel-wrapper">
+                        <button class="show-carousel">Ver Imagens</button>
+                        <div class="carousel-container hidden">
+                            <div class="carousel">
+                                <div class="carousel-container">
+                                    <div class="carousel-item">
+                                        <img src="imagens/card.png" alt="Omori">
+                                        <div class="carousel-caption">
+                                            <h3>Omori</h3>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="imagens/omoriem.jpg" alt="Omori Gameplay">
+                                        <div class="carousel-caption">
+                                            <h3>Gameplay</h3>
+                                        </div>
+                                    </div>
                                 </div>
-                                <button class="prev">&lt;</button>
-                                <button class="next">&gt;</button>
                             </div>
                         </div>
-                        <div class="link-item">
-                            <a href="https://www.mediafire.com/file/8wxtbyfrsfw80ld/Celeste_v1.4.0.0_%2B_Emulador_Skyline_-_APK_World.rar/file 
-                            " target="
-                            _blank">Celeste + emulador</a>
-                            <p>Celeste (800MB)</p> 
-                            <a href="https://www.instagram.com/reel/C8w1wMPOXdx/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA%3D%3D
-                            " target="
-                            _blank"> > Guia para a instalar celeste + emulador</a>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://www.mediafire.com/file/valik38q7g8vlmb/OMORI-br-1.0.8.1.apk/file" target="_blank">Omori</a>
+                        <p>Versão em português do Brasil do aclamado RPG psicológico (750MB).</p>
+                        <div class="link-tags">
+                            <span class="tag">RPG</span>
+                            <span class="tag">PT-BR</span>
                         </div>
-                        <hr>
-                        <div class="carousel-wrapper">
-                            <button class="show-carousel">Ver</button>
-                            <div class="carousel-container hidden">
-                                <div class="carousel">
-                                    <div class="carousel-item"><img src="imagens/card.png" alt="Imagem 2"></div>
-                                    <div class="carousel-item"><img src="imagens/omoriem.jpg" alt="Imagem 1"></div>
+                    </div>
+                    <hr>
+                    
+                    <!-- Skul The Hero Slayer -->
+                    <div class="carousel-wrapper">
+                        <button class="show-carousel">Ver Imagens</button>
+                        <div class="carousel-container hidden">
+                            <div class="carousel">
+                                <div class="carousel-container">
+                                    <div class="carousel-item">
+                                        <img src="imagens/skul.jpg" alt="Skul">
+                                        <div class="carousel-caption">
+                                            <h3>Skul: The Hero Slayer</h3>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="imagens/hero.jpg" alt="Skul Gameplay">
+                                        <div class="carousel-caption">
+                                            <h3>Gameplay</h3>
+                                        </div>
+                                    </div>
                                 </div>
-                                <button class="prev">&lt;</button>
-                                <button class="next">&gt;</button>
                             </div>
                         </div>
-                        <div class="link-item">
-                            <a href="https://www.mediafire.com/file/valik38q7g8vlmb/OMORI-br-1.0.8.1.apk/file " target="
-                            _blank">Omori</a>
-                            <p>Omori pt-br (750MB)</p>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://www.mediafire.com/file/3dfn5x8fzfdszfb/skul_the_hero_slayer_v1.0.2.apk/file" target="_blank">Skul: The Hero Slayer</a>
+                        <p>Versão mobile do roguelike de ação com múltiplas cabeças (1.4GB).</p>
+                        <div class="link-tags">
+                            <span class="tag">Roguelike</span>
+                            <span class="tag">Ação</span>
                         </div>
-                        <hr>
-                        <div class="carousel-wrapper">
-                            <button class="show-carousel">Ver</button>
-                            <div class="carousel-container hidden">
-                                <div class="carousel">
-                                    <div class="carousel-item"><img src="imagens/skul.jpg" alt="Imagem 2"></div>
-                                    <div class="carousel-item"><img src="imagens/hero.jpg" alt="Imagem 1"></div>
+                    </div>
+                    <hr>
+                    
+                    <!-- Devil May Cry Mobile -->
+                    <div class="carousel-wrapper">
+                        <button class="show-carousel">Ver Imagens</button>
+                        <div class="carousel-container hidden">
+                            <div class="carousel">
+                                <div class="carousel-container">
+                                    <div class="carousel-item">
+                                        <img src="imagens/ELCMsd6XUAAGkKQ.jpg" alt="Devil May Cry">
+                                        <div class="carousel-caption">
+                                            <h3>Devil May Cry Mobile</h3>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="imagens/vergil.jpg" alt="Vergil">
+                                        <div class="carousel-caption">
+                                            <h3>Vergil</h3>
+                                        </div>
+                                    </div>
                                 </div>
-                                <button class="prev">&lt;</button>
-                                <button class="next">&gt;</button>
                             </div>
                         </div>
-                        <div class="link-item">
-                            <a href="https://www.mediafire.com/file/3dfn5x8fzfdszfb/skul_the_hero_slayer_v1.0.2.apk/file" target="
-                            _blank">Skul The Hero Slayer</a>
-                            <p>Skul The Hero Slayer (1.4GB)</p>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://drive.google.com/file/d/1Juc6-5DdY2Y64-Np6-FXAWP-dmchw42J/view?usp=drive_link" target="_blank">Devil May Cry Mobile</a>
+                        <p>I AM THE STORM THAT IS APPROACHING (1.4GB).</p>
+                        <div class="link-tags">
+                            <span class="tag">Ação</span>
+                            <span class="tag">Hack'n'Slash</span>
                         </div>
-                        <hr>
-                        <div class="carousel-wrapper">
-                            <button class="show-carousel">Ver</button>
-                            <div class="carousel-container hidden">
-                                <div class="carousel">
-                                    <div class="carousel-item"><img src="imagens/ELCMsd6XUAAGkKQ.jpg" alt="Imagem 2"></div>
-                                    <div class="carousel-item"><img src="imagens/vergil.jpg" alt="Imagem 1"></div>
-                                </div>
-                                <button class="prev">&lt;</button>
-                                <button class="next">&gt;</button>
-                            </div>
-                        </div>
-                        <div class="link-item">
-                            <a href="https://drive.google.com/file/d/1Juc6-5DdY2Y64-Np6-FXAWP-dmchw42J/view?usp=drive_link" target="
-                            _blank">DEVIL MAY CRY MOBILE</a>
-                            <p>I AM THE STORM THAT IS APPROACHING (1.4GB)</p>
-                        </div>
-                        <hr>
+                    </div>
+                </div>
+
+                <!-- Outras seções de links originais aqui... -->
+            </div>
         </section>
     </main>
 
     <footer>
         <div class="container">
+            <div class="social-links">
+                <a href="https://instagram.com/hardy_em_jogo" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
             <p>Instagram: @hardy_em_jogo</p>
+            <p>&copy; 2024 Hardy em Jogo. Todos os direitos reservados.</p>
         </div>
     </footer>
-    <script src="links.js"></script>
-    
+
+    <script src="modern-script.js"></script>
+    <script>
+        // Script específico para esta página
+        document.addEventListener('DOMContentLoaded', function() {
+            // Funcionalidade dos botões "Ver Imagens"
+            document.querySelectorAll('.show-carousel').forEach(button => {
+                button.addEventListener('click', function() {
+                    const container = this.nextElementSibling;
+                    container.classList.toggle('hidden');
+                    this.textContent = container.classList.contains('hidden') ? 'Ver Imagens' : 'Ocultar Imagens';
+                });
+            });
+        });
+    </script>
 </body>
 </html>
