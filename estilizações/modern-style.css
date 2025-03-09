@@ -30,6 +30,27 @@ html, body {
   background-color: var(--primary-color);
   font-size: 16px;
   line-height: 1.6;
+  overflow-x: hidden; /* Prevenir rolagem horizontal */
+  width: 100%;
+  position: relative;
+  max-width: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
+body.menu-open {
+  overflow: hidden; /* Impedir qualquer scroll quando o menu está aberto */
 }
 
 .container {
@@ -37,6 +58,7 @@ html, body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.5rem;
+  overflow-x: hidden;
 }
 
 /* Links e botões */
@@ -131,6 +153,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
 .logo {
@@ -152,6 +175,7 @@ header {
   display: flex;
   gap: 2rem;
   align-items: center;
+  transition: transform var(--transition-speed) ease;
 }
 
 .nav-links a {
@@ -160,6 +184,7 @@ header {
   font-weight: 500;
   position: relative;
   padding: 0.5rem 0;
+  transition: color var(--transition-speed);
 }
 
 .nav-links a::after {
@@ -185,6 +210,17 @@ header {
   color: var(--text-color);
   font-size: 1.5rem;
   cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1010;
+  transition: transform 0.3s ease;
+}
+
+.mobile-toggle:hover {
+  transform: scale(1.1);
+}
+
+.mobile-toggle:focus {
+  outline: none;
 }
 
 /* Hero section */
@@ -329,11 +365,13 @@ footer .social-links a:hover {
   width: 100%;
   overflow: hidden;
   border-radius: var(--border-radius);
+  margin-bottom: 1rem;
 }
 
 .carousel-container {
   display: flex;
   transition: transform 0.5s ease;
+  width: 100%;
 }
 
 .carousel-item {
@@ -356,6 +394,7 @@ footer .social-links a:hover {
   justify-content: space-between;
   transform: translateY(-50%);
   z-index: 2;
+  padding: 0 10px;
 }
 
 .carousel-btn {
@@ -371,10 +410,16 @@ footer .social-links a:hover {
   justify-content: center;
   transition: background-color var(--transition-speed);
   border: 2px solid var(--accent-color);
+  z-index: 10;
 }
 
 .carousel-btn:hover {
   background-color: var(--accent-color);
+}
+
+.carousel-btn span {
+  font-size: 1.5rem;
+  line-height: 1;
 }
 
 /* Responsive styles */
@@ -389,14 +434,39 @@ footer .social-links a:hover {
 }
 
 @media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+    position: relative;
+    width: 100%;
+    max-width: 100vw;
+  }
+  
   .mobile-toggle {
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1010;
+    position: relative;
     display: block;
+    transition: transform 0.3s ease;
+    outline: none;
+  }
+  
+  .mobile-toggle:focus {
+    outline: none;
+  }
+  
+  .mobile-toggle:hover {
+    transform: scale(1.1);
   }
   
   .nav-links {
     position: fixed;
     top: 70px;
-    right: -100%;
+    right: -100vw; /* Usar vw em vez de % para garantir que fique completamente fora da tela */
     flex-direction: column;
     gap: 0;
     background-color: var(--secondary-color);
@@ -406,14 +476,17 @@ footer .social-links a:hover {
     transition: right var(--transition-speed);
     z-index: 999;
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+    visibility: hidden; /* Esconder completamente quando não estiver ativo */
   }
   
   .nav-links.active {
     right: 0;
+    visibility: visible; /* Mostrar apenas quando estiver ativo */
   }
   
-  .nav-links li {
-    width: 100%;
+  .nav-links a::after {
+    display: none;
   }
   
   .nav-links a {
@@ -421,10 +494,43 @@ footer .social-links a:hover {
     padding: 1rem 0;
     font-size: 1.2rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    width: 100%;
+  }
+  
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-speed), visibility var(--transition-speed);
+    pointer-events: none;
+  }
+  
+  body.menu-open::after {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  
+  .nav-links .btn {
+    margin-top: 1rem;
+    width: 100%;
+    text-align: center;
   }
   
   .grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .hero {
+    padding: 3rem 0;
   }
   
   .hero h1 {
@@ -433,6 +539,66 @@ footer .social-links a:hover {
   
   .hero p {
     font-size: 1rem;
+    padding: 0 1rem;
+  }
+  
+  .card {
+    margin-bottom: 1rem;
+  }
+  
+  .carousel {
+    height: auto;
+    max-height: 250px;
+  }
+  
+  .carousel-item img {
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .carousel-controls {
+    padding: 0 5px;
+  }
+  
+  .carousel-btn {
+    width: 35px;
+    height: 35px;
+    opacity: 0.8;
+  }
+  
+  .carousel-btn span {
+    font-size: 1.2rem;
+  }
+  
+  .links-category {
+    padding: 1.5rem;
+  }
+  
+  .link-item a {
+    font-size: 1.1rem;
+    word-break: break-word;
+  }
+  
+  .link-tags {
+    flex-wrap: wrap;
+  }
+  
+  .show-carousel {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    .nav-links {
+      width: 85%;
+      padding: 5rem 1.5rem 2rem;
+    }
+  }
+  
+  /* Garantir que o conteúdo principal não cause overflow */
+  main {
+    width: 100%;
+    overflow-x: hidden;
   }
 }
 
@@ -497,4 +663,39 @@ footer .social-links a:hover {
 
 .is-mobile section {
   padding: 3rem 0;
+}
+
+/* Ajustes para telas muito pequenas */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 0.8rem;
+  }
+  
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  
+  .section h2 {
+    font-size: 1.6rem;
+  }
+  
+  .card-title {
+    font-size: 1.2rem;
+  }
+  
+  .links-category h2 {
+    font-size: 1.4rem;
+  }
+  
+  .carousel-item img {
+    height: 180px;
+  }
+  
+  .carousel-caption h3 {
+    font-size: 1rem;
+  }
+  
+  .nav-links {
+    width: 90%;
+  }
 } 

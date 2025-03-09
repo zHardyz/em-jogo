@@ -6,16 +6,33 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.classList.add('is-mobile');
     }
 
+    // Prevenir scroll horizontal em toda a página
+    document.documentElement.style.overflowX = 'hidden';
+    document.body.style.overflowX = 'hidden';
+    
     // Funcionalidade do menu mobile
     const mobileToggle = document.querySelector('.mobile-toggle');
     const navLinks = document.querySelector('.nav-links');
     
     if (mobileToggle) {
-        mobileToggle.addEventListener('click', function() {
+        // Corrigir o menu dropdown mobile
+        mobileToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
             navLinks.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
+            
+            // Impedir rolagem do body quando o menu estiver aberto
+            if (document.body.classList.contains('menu-open')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+            
             mobileToggle.setAttribute('aria-expanded', 
                 mobileToggle.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'
             );
+            
             // Alternar ícone do menu
             const icon = mobileToggle.querySelector('i');
             if (icon) {
@@ -28,8 +45,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Fechar menu mobile ao clicar em um link
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => {
-            if (navLinks.classList.contains('active')) {
+            if (navLinks && navLinks.classList.contains('active')) {
                 navLinks.classList.remove('active');
+                document.body.classList.remove('menu-open');
+                document.body.style.overflow = '';
+                
                 if (mobileToggle) {
                     mobileToggle.setAttribute('aria-expanded', 'false');
                     const icon = mobileToggle.querySelector('i');
@@ -45,11 +65,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Fechar menu mobile ao clicar fora
     document.addEventListener('click', function(e) {
         if (
+            navLinks && 
             navLinks.classList.contains('active') && 
             !navLinks.contains(e.target) && 
-            !mobileToggle.contains(e.target)
+            mobileToggle && !mobileToggle.contains(e.target)
         ) {
             navLinks.classList.remove('active');
+            document.body.classList.remove('menu-open');
+            document.body.style.overflow = '';
+            
             if (mobileToggle) {
                 mobileToggle.setAttribute('aria-expanded', 'false');
                 const icon = mobileToggle.querySelector('i');
@@ -59,6 +83,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         }
+    });
+    
+    // Prevenir scroll horizontal em dispositivos móveis
+    document.addEventListener('touchmove', function(e) {
+        if (document.body.classList.contains('menu-open')) {
+            // Permitir scroll apenas dentro do menu
+            if (!navLinks.contains(e.target)) {
+                e.preventDefault();
+            }
+        }
+    }, { passive: false });
+    
+    // Verificar e corrigir qualquer scroll horizontal
+    window.addEventListener('resize', function() {
+        document.documentElement.style.overflowX = 'hidden';
+        document.body.style.overflowX = 'hidden';
     });
     
     // Efeito de rolagem suave para links de ancoragem
@@ -75,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Funcionalidade do carrossel
+    // Funcionalidade do carrossel melhorada
     initializeCarousels();
     
     // Efeito de revelação ao rolar
@@ -116,6 +156,21 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+    
+    // Ajustar carrosséis para dispositivos móveis
+    if (isMobile) {
+        adjustCarouselsForMobile();
+    }
+    
+    // Ajustar tamanho dos carrosséis ao redimensionar a janela
+    window.addEventListener('resize', function() {
+        if (window.innerWidth <= 768) {
+            document.body.classList.add('is-mobile');
+            adjustCarouselsForMobile();
+        } else {
+            document.body.classList.remove('is-mobile');
+        }
+    });
 });
 
 // Função para inicializar todos os carrosséis da página
@@ -154,15 +209,45 @@ function initializeCarousels() {
             }
             
             // Funcionalidade dos botões
-            nextBtn.addEventListener('click', () => {
+            nextBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
                 currentSlide = (currentSlide + 1) % totalSlides;
                 updateCarousel();
             });
             
-            prevBtn.addEventListener('click', () => {
+            prevBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
                 currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
                 updateCarousel();
             });
+            
+            // Adicionar suporte para gestos de deslize em dispositivos móveis
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            carousel.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, {passive: true});
+            
+            carousel.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, {passive: true});
+            
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                if (touchEndX < touchStartX - swipeThreshold) {
+                    // Deslize para a esquerda - próximo slide
+                    currentSlide = (currentSlide + 1) % totalSlides;
+                    updateCarousel();
+                } else if (touchEndX > touchStartX + swipeThreshold) {
+                    // Deslize para a direita - slide anterior
+                    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                    updateCarousel();
+                }
+            }
             
             // Atualizar a posição do carrossel
             function updateCarousel() {
@@ -184,10 +269,26 @@ function initializeCarousels() {
             
             carousel.addEventListener('mouseenter', stopAutoPlay);
             carousel.addEventListener('mouseleave', startAutoPlay);
+            carousel.addEventListener('touchstart', stopAutoPlay, {passive: true});
+            carousel.addEventListener('touchend', startAutoPlay, {passive: true});
             
             // Iniciar auto-play
             startAutoPlay();
         }
+    });
+}
+
+// Função para ajustar carrosséis em dispositivos móveis
+function adjustCarouselsForMobile() {
+    document.querySelectorAll('.carousel').forEach(carousel => {
+        const carouselItems = carousel.querySelectorAll('.carousel-item');
+        carouselItems.forEach(item => {
+            const img = item.querySelector('img');
+            if (img) {
+                img.style.height = '200px';
+                img.style.objectFit = 'cover';
+            }
+        });
     });
 }
 
@@ -198,7 +299,7 @@ function filterItems(searchTerm) {
     let hasResults = false;
     
     items.forEach(item => {
-        const title = item.getAttribute('data-title').toLowerCase();
+        const title = item.getAttribute('data-title')?.toLowerCase() || '';
         const isVisible = title.includes(searchTerm);
         
         item.style.display = isVisible ? 'block' : 'none';
