@@ -6,38 +6,68 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.classList.add('is-mobile');
     }
 
+    // Detectar página ativa e marcar no navbar
+    function setActiveNavItem() {
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const navLinks = document.querySelectorAll('.nav-links a');
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            const linkPage = link.getAttribute('href');
+            
+            if (linkPage === currentPage || 
+                (currentPage === '' && linkPage === 'index.html') ||
+                (currentPage === 'index.html' && linkPage === 'index.html')) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    // Aplicar página ativa
+    setActiveNavItem();
+
     // Prevenir scroll horizontal em toda a página
     document.documentElement.style.overflowX = 'hidden';
     document.body.style.overflowX = 'hidden';
     
-    // Funcionalidade do menu mobile
+    // Funcionalidade do menu mobile melhorada
     const mobileToggle = document.querySelector('.mobile-toggle');
     const navLinks = document.querySelector('.nav-links');
     
     if (mobileToggle) {
-        // Corrigir o menu dropdown mobile
+        // Menu dropdown mobile com animações
         mobileToggle.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            navLinks.classList.toggle('active');
-            document.body.classList.toggle('menu-open');
             
-            // Impedir rolagem do body quando o menu estiver aberto
-            if (document.body.classList.contains('menu-open')) {
-                document.body.style.overflow = 'hidden';
-            } else {
+            const isOpen = navLinks.classList.contains('active');
+            
+            if (isOpen) {
+                // Fechar menu
+                navLinks.classList.remove('active');
+                document.body.classList.remove('menu-open');
                 document.body.style.overflow = '';
-            }
-            
-            mobileToggle.setAttribute('aria-expanded', 
-                mobileToggle.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'
-            );
-            
-            // Alternar ícone do menu
-            const icon = mobileToggle.querySelector('i');
-            if (icon) {
-                icon.classList.toggle('fa-bars');
-                icon.classList.toggle('fa-times');
+                mobileToggle.classList.remove('active');
+                mobileToggle.setAttribute('aria-expanded', 'false');
+                
+                // Animação do ícone
+                const icon = mobileToggle.querySelector('i');
+                if (icon) {
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            } else {
+                // Abrir menu
+                navLinks.classList.add('active');
+                document.body.classList.add('menu-open');
+                document.body.style.overflow = 'hidden';
+                mobileToggle.classList.add('active');
+                mobileToggle.setAttribute('aria-expanded', 'true');
+                
+                // Animação do ícone
+                const icon = mobileToggle.querySelector('i');
+                if (icon) {
+                    icon.style.transform = 'rotate(90deg)';
+                }
             }
         });
     }
@@ -49,13 +79,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 navLinks.classList.remove('active');
                 document.body.classList.remove('menu-open');
                 document.body.style.overflow = '';
+                mobileToggle.classList.remove('active');
                 
                 if (mobileToggle) {
                     mobileToggle.setAttribute('aria-expanded', 'false');
                     const icon = mobileToggle.querySelector('i');
                     if (icon) {
-                        icon.classList.add('fa-bars');
-                        icon.classList.remove('fa-times');
+                        icon.style.transform = 'rotate(0deg)';
                     }
                 }
             }
@@ -73,14 +103,30 @@ document.addEventListener('DOMContentLoaded', function() {
             navLinks.classList.remove('active');
             document.body.classList.remove('menu-open');
             document.body.style.overflow = '';
+            mobileToggle.classList.remove('active');
             
             if (mobileToggle) {
                 mobileToggle.setAttribute('aria-expanded', 'false');
                 const icon = mobileToggle.querySelector('i');
                 if (icon) {
-                    icon.classList.add('fa-bars');
-                    icon.classList.remove('fa-times');
+                    icon.style.transform = 'rotate(0deg)';
                 }
+            }
+        }
+    });
+
+    // Fechar menu mobile ao pressionar ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && navLinks && navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            document.body.classList.remove('menu-open');
+            document.body.style.overflow = '';
+            mobileToggle.classList.remove('active');
+            mobileToggle.setAttribute('aria-expanded', 'false');
+            
+            const icon = mobileToggle.querySelector('i');
+            if (icon) {
+                icon.style.transform = 'rotate(0deg)';
             }
         }
     });
