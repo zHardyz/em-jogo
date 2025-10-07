@@ -10,201 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Zetta:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="estilizações/modern-style.css">
-    <style>
-        /* Estilos específicos para a página de links */
-        .links-category {
-            background-color: var(--card-bg);
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .links-category h2 {
-            color: var(--accent-color);
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            text-align: left;
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .links-category h2 i {
-            color: var(--accent-color);
-        }
-        
-        .link-item {
-            padding: 1rem 0;
-        }
-        
-        .link-item a {
-            display: inline-block;
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            position: relative;
-        }
-        
-        .link-item a::before {
-            content: '→';
-            margin-right: 0.5rem;
-            color: var(--accent-color);
-        }
-        
-        .link-item p {
-            color: var(--text-muted);
-            margin-left: 1.5rem;
-        }
-        
-        hr {
-            border: none;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin: 1rem 0;
-        }
-        
-        .carousel-wrapper {
-            margin-top: 1rem;
-            position: relative;
-        }
-        
-        .carousel {
-            margin-top: 1rem;
-            position: relative;
-            overflow: hidden;
-            border-radius: var(--border-radius);
-            max-height: 300px;
-        }
-        
-        .carousel-container {
-            display: flex;
-            transition: transform 0.5s ease;
-            height: 100%;
-        }
-        
-        .carousel-item {
-            position: relative;
-            flex: 0 0 100%;
-            width: 100%;
-        }
-        
-        .carousel-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            display: block;
-        }
-        
-        .carousel-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
-            padding: 1rem;
-            color: white;
-        }
-        
-        .show-carousel {
-            background-color: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            font-weight: 600;
-            transition: background-color var(--transition-speed), transform var(--transition-speed);
-            display: inline-block;
-        }
-        
-        .show-carousel:hover {
-            background-color: var(--accent-hover);
-            transform: translateY(-3px);
-        }
-        
-        .hidden {
-            display: none;
-        }
-        
-        .link-tags {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: 0.5rem;
-            flex-wrap: wrap;
-        }
-        
-        .tag {
-            background: var(--accent-color);
-            color: white;
-            font-size: 0.8rem;
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-        }
-        
-        /* Correções de responsividade */
-        @media (max-width: 768px) {
-            .links-category {
-                padding: 1.5rem;
-            }
-            
-            .links-category h2 {
-                font-size: 1.5rem;
-            }
-            
-            .link-item a {
-                font-size: 1.1rem;
-                word-break: break-word;
-            }
-            
-            .carousel-caption {
-                padding: 0.5rem;
-            }
-            
-            .carousel-caption h3 {
-                font-size: 1.1rem;
-                margin-bottom: 0.2rem;
-            }
-            
-            .carousel-caption p {
-                font-size: 0.9rem;
-            }
-            
-            .carousel-item img {
-                height: 200px;
-            }
-            
-            .show-carousel {
-                width: 100%;
-                text-align: center;
-                padding: 0.6rem;
-            }
-            
-            .link-tags {
-                justify-content: flex-start;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .links-category h2 {
-                font-size: 1.3rem;
-            }
-            
-            .link-item a {
-                font-size: 1rem;
-            }
-            
-            .carousel-item img {
-                height: 180px;
-            }
-            
-            .carousel-caption h3 {
-                font-size: 1rem;
-            }
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -235,91 +40,11 @@
         </section>
 
         <section id="links" class="links-section">
-            <div class="container">
-                <!-- Seção de links para Recursos de Edição -->
-                <div class="links-category reveal">
-                    <h2><i class="fas fa-video"></i> Recursos para Edição de Vídeos</h2>
-                    <div class="link-item">
-                        <a href="https://drive.google.com/drive/folders/1E3d4A_THoqWFC-cwdUthv9Z_nkTKFYM_?usp=drive_link" target="_blank">Pack 1 - Recursos Essenciais</a>
-                        <p>Uma coleção completa de sons, músicas de fundo e ícones para suas produções.</p>
-                        <div class="link-tags">
-                            <span class="tag">Áudio</span>
-                            <span class="tag">Música</span>
-                            <span class="tag">Ícones</span>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="link-item">
-                        <a href="" target="">Pack 2 - Recursos Avançados</a>
-                        <p>Em breve! Aguarde novos recursos para edição de vídeo.</p>
-                        <div class="link-tags">
-                            <span class="tag">Em Breve</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Seção de links para Dragon Ball -->
-                <div class="links-category reveal">
-                    <h2><i class="fas fa-dragon"></i> Dragon Ball Sparking Zero</h2>
-                    <div class="carousel-wrapper">
-                        <button class="show-carousel">Ver Imagens</button>
-                        <div class="carousel-container hidden">
-                            <div class="carousel">
-                                <div class="carousel-container">
-                                    <div class="carousel-item">
-                                        <img src="imagens/hq720.jpg" alt="Dragon Ball Sparking Zero Screenshot">
-                                        <div class="carousel-caption">
-                                            <h3>Dragon Ball Sparking Zero</h3>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="imagens/dragon-ball-sparking-zero_pw6f.jpg" alt="Dragon Ball Sparking Zero Gameplay">
-                                        <div class="carousel-caption">
-                                            <h3>Gameplay</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="link-item">
-                        <a href="https://drive.google.com/drive/folders/18CRUz3I4jVP0KNbrv-bFtxP22Mc03IF5?usp=sharing" target="_blank">Pack de Otimização</a>
-                        <p>Remove bloom do jogo e melhora o desempenho.</p>
-                        <div class="link-tags">
-                            <span class="tag">Otimização</span>
-                            <span class="tag">Mods</span>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="link-item">
-                        <a href="https://drive.google.com/drive/folders/1GaSWAQqk6up_CenBsNIl_bFdcK_MaLJn?usp=drive_link" target="_blank">Game Save 100%</a>
-                        <p>Save 100% completo de Dragon Ball Sparking Zero.</p>
-                        <div class="link-tags">
-                            <span class="tag">Save</span>
-                            <span class="tag">100%</span>
-                        </div>
-                    </div>
-                </div>
 
                 <!-- Seção de links para Hollow Knight -->
                 <div class="links-category reveal">
                     <h2><i class="fas fa-bug"></i> Hollow Knight</h2>
-                        <div class="carousel-wrapper">
-                        <button class="show-carousel">Ver Imagens</button>
-                            <div class="carousel-container hidden">
-                                <div class="carousel">
-                                <div class="carousel-container">
-                                    <div class="carousel-item">
-                                        <img src="imagens/okhm7mpm7rha1.jpg" alt="Hollow Knight Screenshot">
-                                        <div class="carousel-caption">
-                                            <h3>Hollow Knight</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="link-item">
+                    <div class="link-item">
                         <a href="https://drive.google.com/file/d/1euu1v5zfKRy5q1pcomIkFRYntZ2bA2lR/view?usp=sharing" target="_blank">Hollow Knight Mobile</a>
                         <p>Versão mobile completa com todas as DLCs (1GB).</p>
                         <div class="link-tags">
@@ -328,7 +53,7 @@
                         </div>
                     </div>
                     <hr>
-                        <div class="link-item">
+                    <div class="link-item">
                         <a href="https://drive.google.com/file/d/16V4hZdQia025n6Mw-jrXqjYO7nfjIjDo/view?usp=drive_link" target="_blank">Hollow Knight Lite</a>
                         <p>Versão otimizada para celulares com hardware mais fraco (440MB).</p>
                         <div class="link-tags">
@@ -341,36 +66,15 @@
                 <!-- Seção de links para Celeste -->
                 <div class="links-category reveal">
                     <h2><i class="fas fa-mountain"></i> Celeste</h2>
-                        <div class="carousel-wrapper">
-                        <button class="show-carousel">Ver Imagens</button>
-                            <div class="carousel-container hidden">
-                                <div class="carousel">
-                                <div class="carousel-container">
-                                    <div class="carousel-item">
-                                        <img src="imagens/celesteof.jpg" alt="Celeste Screenshot">
-                                        <div class="carousel-caption">
-                                            <h3>Celeste</h3>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="imagens/i-launched-celeste-on-my-fricking-phone-v0-kfh4m29pplsc1.jpg" alt="Celeste Mobile">
-                                        <div class="carousel-caption">
-                                            <h3>Celeste Mobile</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="link-item">
+                    <div class="link-item">
                         <a href="https://www.mediafire.com/file/8wxtbyfrsfw80ld/Celeste_v1.4.0.0_%2B_Emulador_Skyline_-_APK_World.rar/file" target="_blank">Celeste + Emulador</a>
                         <p>Versão completa do Celeste para dispositivos móveis (800MB).</p>
                         <div class="link-tags">
                             <span class="tag">Mobile</span>
                             <span class="tag">Emulador</span>
                         </div>
-                        </div>
-                        <hr>
+                    </div>
+                    <hr>
                     <div class="link-item">
                         <a href="https://www.instagram.com/reel/C8w1wMPOXdx/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA%3D%3D" target="_blank">Guia de Instalação</a>
                         <p>Tutorial passo a passo para instalar Celeste + emulador no seu dispositivo.</p>
@@ -386,182 +90,62 @@
                     <h2><i class="fas fa-mobile-alt"></i> Jogos Mobile</h2>
                     
                     <!-- App Video Game Pro -->
-                        <div class="carousel-wrapper">
-                        <button class="show-carousel">Ver Imagens</button>
-                            <div class="carousel-container hidden">
-                                <div class="carousel">
-                                <div class="carousel-container">
-                                    <div class="carousel-item">
-                                        <img src="imagens/unnamed.png" alt="App Video Game Pro">
-                                        <div class="carousel-caption">
-                                            <h3>App Video Game Pro</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="link-item">
+                    <div class="link-item">
                         <a href="https://drive.google.com/file/d/1Pt80miAkhCg0cj2IQHI5ALImuCMzUaTw/view?usp=drive_link" target="_blank">App Video Game Pro</a>
                         <p>Emulador de jogos retrô para celular.</p>
                         <div class="link-tags">
                             <span class="tag">Retrô</span>
                             <span class="tag">Emulador</span>
                         </div>
-                        </div>
-                        <hr>
+                    </div>
+                    <hr>
                     
                     <!-- Dead Cells -->
-                        <div class="carousel-wrapper">
-                        <button class="show-carousel">Ver Imagens</button>
-                            <div class="carousel-container hidden">
-                                <div class="carousel">
-                                <div class="carousel-container">
-                                    <div class="carousel-item">
-                                        <img src="imagens/Game-Key-Art_0015_DC_KeyArt_NoLogo_1920x1080px-1024x576.jpg" alt="Dead Cells">
-                                        <div class="carousel-caption">
-                                            <h3>Dead Cells</h3>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="imagens/44hld39d0bg81.jpg" alt="Dead Cells Gameplay">
-                                        <div class="carousel-caption">
-                                            <h3>Gameplay</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="link-item">
+                    <div class="link-item">
                         <a href="https://www.mediafire.com/file/zngod238i8xj8ag/com.playdigious.deadcells.mobile_3.3.15-APK_Award.apk/file" target="_blank">Dead Cells</a>
                         <p>Versão mobile do aclamado roguelike (2GB).</p>
                         <div class="link-tags">
                             <span class="tag">Roguelike</span>
                             <span class="tag">Ação</span>
                         </div>
-                        </div>
-                        <hr>
+                    </div>
+                    <hr>
                     
                     <!-- Limbo -->
-                        <div class="carousel-wrapper">
-                        <button class="show-carousel">Ver Imagens</button>
-                            <div class="carousel-container hidden">
-                                <div class="carousel">
-                                <div class="carousel-container">
-                                    <div class="carousel-item">
-                                        <img src="imagens/limbocompleto.jpg" alt="Limbo">
-                                        <div class="carousel-caption">
-                                            <h3>Limbo</h3>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="imagens/limbo-18475-2.jpg" alt="Limbo Gameplay">
-                                        <div class="carousel-caption">
-                                            <h3>Gameplay</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="link-item">
+                    <div class="link-item">
                         <a href="https://www.mediafire.com/file/2w0kps9drdztxl5/LIMBO_%28MOD%2C_Unlocked%29_1.20_latestmodapks.com.apk/file" target="_blank">Limbo</a>
                         <p>Versão mobile do clássico jogo de plataforma atmosférico (141MB).</p>
                         <div class="link-tags">
                             <span class="tag">Plataforma</span>
                             <span class="tag">Puzzle</span>
                         </div>
-                        </div>
-                        <hr>
+                    </div>
+                    <hr>
                     
                     <!-- Omori -->
-                        <div class="carousel-wrapper">
-                        <button class="show-carousel">Ver Imagens</button>
-                            <div class="carousel-container hidden">
-                                <div class="carousel">
-                                <div class="carousel-container">
-                                    <div class="carousel-item">
-                                        <img src="imagens/card.png" alt="Omori">
-                                        <div class="carousel-caption">
-                                            <h3>Omori</h3>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="imagens/omoriem.jpg" alt="Omori Gameplay">
-                                        <div class="carousel-caption">
-                                            <h3>Gameplay</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="link-item">
+                    <div class="link-item">
                         <a href="https://www.mediafire.com/file/valik38q7g8vlmb/OMORI-br-1.0.8.1.apk/file" target="_blank">Omori</a>
                         <p>Versão em português do Brasil do aclamado RPG psicológico (750MB).</p>
                         <div class="link-tags">
                             <span class="tag">RPG</span>
                             <span class="tag">PT-BR</span>
                         </div>
-                        </div>
-                        <hr>
+                    </div>
+                    <hr>
                     
                     <!-- Skul The Hero Slayer -->
-                        <div class="carousel-wrapper">
-                        <button class="show-carousel">Ver Imagens</button>
-                            <div class="carousel-container hidden">
-                                <div class="carousel">
-                                <div class="carousel-container">
-                                    <div class="carousel-item">
-                                        <img src="imagens/skul.jpg" alt="Skul">
-                                        <div class="carousel-caption">
-                                            <h3>Skul: The Hero Slayer</h3>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="imagens/hero.jpg" alt="Skul Gameplay">
-                                        <div class="carousel-caption">
-                                            <h3>Gameplay</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="link-item">
+                    <div class="link-item">
                         <a href="https://www.mediafire.com/file/3dfn5x8fzfdszfb/skul_the_hero_slayer_v1.0.2.apk/file" target="_blank">Skul: The Hero Slayer</a>
                         <p>Versão mobile do roguelike de ação com múltiplas cabeças (1.4GB).</p>
                         <div class="link-tags">
                             <span class="tag">Roguelike</span>
                             <span class="tag">Ação</span>
                         </div>
-                        </div>
-                        <hr>
+                    </div>
+                    <hr>
                     
                     <!-- Devil May Cry Mobile -->
-                        <div class="carousel-wrapper">
-                        <button class="show-carousel">Ver Imagens</button>
-                            <div class="carousel-container hidden">
-                                <div class="carousel">
-                                <div class="carousel-container">
-                                    <div class="carousel-item">
-                                        <img src="imagens/ELCMsd6XUAAGkKQ.jpg" alt="Devil May Cry">
-                                        <div class="carousel-caption">
-                                            <h3>Devil May Cry Mobile</h3>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="imagens/vergil.jpg" alt="Vergil">
-                                        <div class="carousel-caption">
-                                            <h3>Vergil</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="link-item">
+                    <div class="link-item">
                         <a href="https://drive.google.com/file/d/1Juc6-5DdY2Y64-Np6-FXAWP-dmchw42J/view?usp=drive_link" target="_blank">Devil May Cry Mobile</a>
                         <p>I AM THE STORM THAT IS APPROACHING (1.4GB).</p>
                         <div class="link-tags">
@@ -589,135 +173,5 @@
     </footer>
 
     <script src="modern-script.js"></script>
-    <script>
-        // Script específico para esta página
-        document.addEventListener('DOMContentLoaded', function() {
-            // Corrigir estrutura dos carrosséis
-            document.querySelectorAll('.carousel').forEach(carousel => {
-                // Verificar se há carrossel dentro de carrossel (estrutura incorreta)
-                const nestedContainer = carousel.querySelector('.carousel-container .carousel-container');
-                if (nestedContainer) {
-                    // Corrigir estrutura movendo os itens para o container correto
-                    const items = nestedContainer.querySelectorAll('.carousel-item');
-                    const parentContainer = carousel.querySelector('.carousel-container');
-                    
-                    items.forEach(item => {
-                        parentContainer.appendChild(item);
-                    });
-                    
-                    // Remover o container aninhado incorreto
-                    if (nestedContainer.parentNode) {
-                        nestedContainer.parentNode.removeChild(nestedContainer);
-                    }
-                }
-            });
-            
-            // Funcionalidade dos botões "Ver Imagens"
-            document.querySelectorAll('.show-carousel').forEach(button => {
-                button.addEventListener('click', function() {
-                    const container = this.nextElementSibling;
-                    container.classList.toggle('hidden');
-                    this.textContent = container.classList.contains('hidden') ? 'Ver Imagens' : 'Ocultar Imagens';
-                    
-                    // Inicializar carrossel quando visível
-                    if (!container.classList.contains('hidden')) {
-                        const carousel = container.querySelector('.carousel');
-                        if (carousel) {
-                            // Forçar recálculo do layout para corrigir problemas de exibição
-                            carousel.style.display = 'none';
-                            setTimeout(() => {
-                                carousel.style.display = '';
-                                
-                                // Garantir que o carrossel seja inicializado
-                                if (!carousel.querySelector('.carousel-controls')) {
-                                    initializeCarousel(carousel);
-                                }
-                            }, 10);
-                        }
-                    }
-                });
-            });
-            
-            // Função para inicializar um carrossel específico
-            function initializeCarousel(carousel) {
-                const container = carousel.querySelector('.carousel-container');
-                if (!container) return;
-                
-                // Criar botões de controle
-                const controls = document.createElement('div');
-                controls.className = 'carousel-controls';
-                
-                const prevBtn = document.createElement('button');
-                prevBtn.className = 'carousel-btn prev-btn';
-                prevBtn.innerHTML = '<span>&lsaquo;</span>';
-                prevBtn.setAttribute('aria-label', 'Slide anterior');
-                
-                const nextBtn = document.createElement('button');
-                nextBtn.className = 'carousel-btn next-btn';
-                nextBtn.innerHTML = '<span>&rsaquo;</span>';
-                nextBtn.setAttribute('aria-label', 'Próximo slide');
-                
-                controls.appendChild(prevBtn);
-                controls.appendChild(nextBtn);
-                carousel.appendChild(controls);
-                
-                // Inicializar estado do carrossel
-                let currentSlide = 0;
-                const items = container.querySelectorAll('.carousel-item');
-                const totalSlides = items.length;
-                
-                if (totalSlides <= 1) {
-                    controls.style.display = 'none';
-                    return;
-                }
-                
-                // Funcionalidade dos botões
-                nextBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    currentSlide = (currentSlide + 1) % totalSlides;
-                    updateCarousel();
-                });
-                
-                prevBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-                    updateCarousel();
-                });
-                
-                // Adicionar suporte para gestos de deslize em dispositivos móveis
-                let touchStartX = 0;
-                let touchEndX = 0;
-                
-                carousel.addEventListener('touchstart', (e) => {
-                    touchStartX = e.changedTouches[0].screenX;
-                }, {passive: true});
-                
-                carousel.addEventListener('touchend', (e) => {
-                    touchEndX = e.changedTouches[0].screenX;
-                    handleSwipe();
-                }, {passive: true});
-                
-                function handleSwipe() {
-                    const swipeThreshold = 50;
-                    if (touchEndX < touchStartX - swipeThreshold) {
-                        // Deslize para a esquerda - próximo slide
-                        currentSlide = (currentSlide + 1) % totalSlides;
-                        updateCarousel();
-                    } else if (touchEndX > touchStartX + swipeThreshold) {
-                        // Deslize para a direita - slide anterior
-                        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-                        updateCarousel();
-                    }
-                }
-                
-                // Atualizar a posição do carrossel
-                function updateCarousel() {
-                    container.style.transform = `translateX(-${currentSlide * 100}%)`;
-                }
-            }
-        });
-    </script>
 </body>
 </html>
